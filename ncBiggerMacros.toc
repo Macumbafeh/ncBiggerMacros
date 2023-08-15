@@ -1,0 +1,10 @@
+## Interface: 20400
+## Author: nightcracker, modified by Macumba
+## Version: 1.2 BETA
+## Title: ncBiggerMacros
+## Notes: Allows you to make macro's up to 1024 characters.
+## SavedVariables: StoredMacros
+## SavedVariablesPerCharacter: StoredMacrosPerCharacter
+
+
+ncBiggerMacros.lua
