@@ -45,8 +45,22 @@ local function new()
 	local index = 1
 
 	if MacroPopupFrame.mode == "new" then
-		index = CreateMacro(MacroPopupEditBox:GetText(), MacroPopupFrame.selectedIcon, nil, MacroFrame.macroBase > 0)
-		local global, perchar = GetNumMacros()
+		if MacroFrame.macroBase == 0 then
+    local global, _ = GetNumMacros()
+    if global < MAX_ACCOUNT_MACROS then
+        index = CreateMacro(MacroPopupEditBox:GetText(), MacroPopupFrame.selectedIcon, nil, MacroFrame.macroBase > 0)
+    else
+        print("Account macros are full. You cannot create more account macros.")
+    end
+else
+    local _, perchar = GetNumMacros()
+    if perchar < MAX_CHARACTER_MACROS then
+        index = CreateMacro(MacroPopupEditBox:GetText(), MacroPopupFrame.selectedIcon, nil, MacroFrame.macroBase > 0)
+    else
+        print("Character macros are full. You cannot create more character macros.")
+    end
+end
+local global, perchar = GetNumMacros()
 		if MacroFrame.macroBase == 0 then
 			for i = global - 1, index, -1 do
 				StoredMacros[i + 1] = StoredMacros[i]
